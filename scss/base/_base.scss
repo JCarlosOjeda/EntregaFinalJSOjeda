@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+/*---Main---*/
+.main {
+    background-color: $color-2;
+}
+
+/*---Titulos(h2)---*/
+.titulosh2 {
+    color: $color-1;
+    font-size: 2rem;
+    font-style: oblique;
+    text-decoration: underline 2px;
+    text-align: center;
+    padding: 20px;
+    font-weight: 600;
+}
+
+/*---Titulos(h3)---*/
+.titulosh3{
+ color: $color-1;
+ text-align: center;
+ font-size: 1.5rem;
+ font-weight: 600;
+}

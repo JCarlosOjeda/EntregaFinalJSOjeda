@@ -1,0 +1,12 @@
+/*--Galeria--*/
+
+
+@media (min-width: 1200px) {
+ 
+    .imagen_galeria:hover {
+        transform: scale(1.1);
+        box-shadow: $sombra;
+        transition-duration: 0.3s;
+    }
+
+}

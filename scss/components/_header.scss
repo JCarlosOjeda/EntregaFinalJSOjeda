@@ -1,0 +1,77 @@
+/*---Header---*/
+
+.header {
+    background-color: $color-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+
+
+.marca__imagen {
+    width: 100px;
+    margin-top: 10px;
+}
+
+
+.marca__title {
+    font-size: 1.8rem;
+    color: $color-3;
+    font-weight: 600;
+}
+
+.navbar__lista {
+    padding: 10px;
+    text-align: justify;
+}
+
+.navbar__item a {
+    color: $color-3;
+    font-size: 0.8rem;
+    padding: 3px;
+    &:hover {
+        color: $color-2
+    }
+}
+
+
+@media (min-width:1200px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        width: 200px;
+
+        li {
+            text-align: right;
+        }
+    }
+
+
+    .marca__imagen {
+        width: 300px;
+    }
+
+    .marca__title {
+        font-size: 4rem;
+    }
+
+    .navbar__item a {
+        font-size: 1.5rem;
+
+    }
+
+    
+}

@@ -1,0 +1,43 @@
+/*--footer--*/
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    background-color: $color-1;
+    align-items: center;
+
+}
+
+footer nav ul li {
+    display: inline-block;
+    padding: 10px;
+    align-items: baseline;
+
+    a {
+        font-size: 1rem;
+        color: $color-3;
+        font-style: oblique;
+        text-decoration: underline;
+
+        &:hover {
+            color: $color-2
+        }
+    }
+}
+
+
+
+.redes {
+    padding: 10px;
+
+    a {
+        color: $color-2;
+        font-size: 2rem;
+        text-decoration: none;
+        padding: 20px;
+
+        &:hover {
+            color: $color-3;
+        }
+    }
+}
