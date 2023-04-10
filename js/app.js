@@ -23,6 +23,7 @@ mostrarProductos();
 
 function mostrarProductos() {
   let productos = document.getElementById("productos");
+  productos.innerHTML = "";
   for (let item of adicionales) {
     productos.innerHTML +=
       `<div class="card bg-success bg-opacity-75 text-center titulosh2C" style="width: 18rem">
@@ -30,7 +31,7 @@ function mostrarProductos() {
                 <div class="card-body">
                 <h2 class="card-title">${item.nombre}</h2>
                 <h3 class="card-text">$${item.precio}</h3>
-                    <a id="btn ${item.id}" href="#" class="btn titulobtn btn-warning" onclick= "agregarAlPresupuesto(${item.id});return false;">Agregar</a>
+                    <a id="btn${item.id}" href="#" class="btn titulobtn btn-warning" onclick= "agregarAlPresupuesto(${item.id});return false;">Agregar</a>
                 </div>
                 </div>`
   }
@@ -53,20 +54,42 @@ function agregarAlPresupuesto(codigo) {
 
   if (existe) {
 
+    const index = carrito.findIndex(p => p.id === codigo);
+
+    if (index !== -1) {
+      carrito.splice(index, 1);
+      let boton = "btn" + codigo;
+      const botonid = document.getElementById(boton);
+      botonid.innerText = "Agregar";
+
+      Swal.fire({
+        title: `Quitamos de tu presupuesto <br> ${prodAlCarrito.nombre} <br> correctamente`,
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        },
+      });
+    }
+
+  } else {
+    carrito.push(prodAlCarrito);
+    let boton = "btn" + codigo;
+    const botonid = document.getElementById(boton);
+    botonid.innerText = "QUITAR";
+
     Swal.fire({
-      title: 'Ya agregaste éste producto a tú presupuesto',
+      title: `Se agrego <br> ${prodAlCarrito.nombre} <br> correctamente`,
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
       },
       hideClass: {
         popup: 'animate__animated animate__fadeOutUp'
-      }
+      },
     });
-
-  } else {
-    carrito.push(prodAlCarrito);
   }
-
+  
   localStorage.setItem("carritoPresupuesto", JSON.stringify(carrito));
 }
 
@@ -75,20 +98,22 @@ function presupuestoFinal() {
   let carritoPresupuesto = JSON.parse(localStorage.getItem("carritoPresupuesto"));
 
   const presupuestoTotal = carritoPresupuesto.reduce((acc, item) => acc + item.precio, 0);
- 
+
   let adicionalesIncluidos = carritoPresupuesto.map((prod) => prod.nombre);
 
   Swal.fire({
-    title: ` Tu presupuesto incluye \n ${adicionalesIncluidos.join("\n")} \n y el total a pagar es $${presupuestoTotal}`,
+    title: ` Tu presupuesto incluye <br> ${adicionalesIncluidos.join("\n")} <br> y el total a pagar es $${presupuestoTotal}`,
     showClass: {
       popup: 'animate__animated animate__fadeInDown'
     },
     hideClass: {
       popup: 'animate__animated animate__fadeOutUp'
-    }
+    },
   });
-  carrito = [];
 
+  carrito = [];
+  mostrarProductos();
   localStorage.clear();
 }
+
 

@@ -1,4 +1,4 @@
-const links = document.querySelectorAll('header nav a')
+const links = document.querySelectorAll('header nav a');
 
 let url;
 
@@ -7,9 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     pedirPage(url)
 })
 
-for (let link of links) {
-    link.addEventListener('click', setURL)
+
+for (let i = 0; i < links.length; i+=1) {
+    if (i >= 5) {
+        break;
+    }
+    let link = links[i];
+    console.log(link);
+    link.addEventListener('click', setURL);
 }
+
 
 function setURL(evt) {
     evt.preventDefault()
