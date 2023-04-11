@@ -9,9 +9,9 @@ class Adicional {
 
 const adicionales = []
 
-adicionales.push(new Adicional("Precio del Salon Fines de Semana", "45000", "parque1", "1"))
-adicionales.push(new Adicional("Precio del Salon de L a V al Mediodía", "36000", "multiple", "2"))
-adicionales.push(new Adicional("Precio del Salon de L a V por la Tarde o Noche", "40500", "interiorV", "3"))
+adicionales.push(new Adicional("Salon Fines de Semana", "45000", "parque1", "1"))
+adicionales.push(new Adicional("Salon de L a V al Mediodía", "36000", "multiple", "2"))
+adicionales.push(new Adicional("Salon de L a V por la Tarde o Noche", "40500", "interiorV", "3"))
 adicionales.push(new Adicional("Maquina de Helados", "12000", "helados", "4"))
 adicionales.push(new Adicional("Cabina de Fotos", "9500", "fotocabina", "5"))
 adicionales.push(new Adicional("Show de Magia", "6500", "animacion", "6"))
@@ -19,29 +19,36 @@ adicionales.push(new Adicional("Show de Burbujas", "3500", "burbujaR", "7"))
 adicionales.push(new Adicional("Tatuajes", "4500", "tatuajes", "8"))
 adicionales.push(new Adicional("Personajes", "10000", "personaje", "9"))
 
+let carrito = JSON.parse(localStorage.getItem("carritoPresupuesto")) || [];
+
 mostrarProductos();
 
 function mostrarProductos() {
   let productos = document.getElementById("productos");
-  productos.innerHTML = "";
+    productos.innerHTML = "";
+
   for (let item of adicionales) {
+    let botonTexto = "Agregar";
+    if (carrito.some((prod) => prod.id === item.id)) {
+      botonTexto = "QUITAR";
+    }
+
     productos.innerHTML +=
       `<div class="card bg-success bg-opacity-75 text-center titulosh2C" style="width: 18rem">
             <img src=../images/${item.img}.jpg class=" w-100 img-fluid" alt="...">
                 <div class="card-body">
                 <h2 class="card-title">${item.nombre}</h2>
                 <h3 class="card-text">$${item.precio}</h3>
-                    <a id="btn${item.id}" href="#" class="btn titulobtn btn-warning" onclick= "agregarAlPresupuesto(${item.id});return false;">Agregar</a>
+                    <a id="btn${item.id}" href="#" class="btn titulobtn btn-warning" onclick= "agregarAlPresupuesto(${item.id});return false;">${botonTexto}</a>
                 </div>
-                </div>`
+                </div>`;
   }
-}
 
-let carrito = JSON.parse(localStorage.getItem('carritoPresupueto')) || [];
+}
 
 function agregarAlPresupuesto(codigo) {
 
-  const prod = adicionales.find(p => p.id === codigo);
+  const prod = adicionales.find(prod => prod.id === codigo);
 
   const prodAlCarrito = {
     nombre: prod.nombre,
@@ -50,7 +57,7 @@ function agregarAlPresupuesto(codigo) {
     id: prod.id,
   };
 
-  existe = carrito.some((prod) => prod.id == codigo);
+  existe = carrito.some((prod) => prod.id === codigo);
 
   if (existe) {
 
@@ -63,7 +70,7 @@ function agregarAlPresupuesto(codigo) {
       botonid.innerText = "Agregar";
 
       Swal.fire({
-        title: `Quitamos de tu presupuesto <br> ${prodAlCarrito.nombre} <br> correctamente`,
+        title: `Quitamos de tu presupuesto <br> ${prodAlCarrito.nombre}`,
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
         },
@@ -89,7 +96,7 @@ function agregarAlPresupuesto(codigo) {
       },
     });
   }
-  
+
   localStorage.setItem("carritoPresupuesto", JSON.stringify(carrito));
 }
 
@@ -115,5 +122,4 @@ function presupuestoFinal() {
   mostrarProductos();
   localStorage.clear();
 }
-
 
