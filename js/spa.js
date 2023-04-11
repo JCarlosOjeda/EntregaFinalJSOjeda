@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 for (let i = 0; i < links.length; i+=1) {
-    if (i >= 5) {
+    if (i >= 4) {
         break;
     }
     let link = links[i];

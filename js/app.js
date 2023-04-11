@@ -29,22 +29,25 @@ function mostrarProductos() {
 
   for (let item of adicionales) {
     let botonTexto = "Agregar";
+    let botonClass = "btn titulobtn btn-warning";
     if (carrito.some((prod) => prod.id === item.id)) {
       botonTexto = "QUITAR";
+      botonClass = "btn titulobtn btn-secondary";
     }
 
     productos.innerHTML +=
       `<div class="card bg-success bg-opacity-75 text-center titulosh2C" style="width: 18rem">
             <img src=../images/${item.img}.jpg class=" w-100 img-fluid" alt="...">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column justify-content-between">
                 <h2 class="card-title">${item.nombre}</h2>
                 <h3 class="card-text">$${item.precio}</h3>
-                    <a id="btn${item.id}" href="#" class="btn titulobtn btn-warning" onclick= "agregarAlPresupuesto(${item.id});return false;">${botonTexto}</a>
+                    <a id="btn${item.id}" href="#" class="${botonClass}" onclick= "agregarAlPresupuesto(${item.id});return false;">${botonTexto}</a>
                 </div>
                 </div>`;
   }
-
+  
 }
+
 
 function agregarAlPresupuesto(codigo) {
 
@@ -96,7 +99,7 @@ function agregarAlPresupuesto(codigo) {
       },
     });
   }
-
+ mostrarProductos();
   localStorage.setItem("carritoPresupuesto", JSON.stringify(carrito));
 }
 
