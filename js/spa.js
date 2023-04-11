@@ -3,7 +3,7 @@ const links = document.querySelectorAll('header nav a');
 let url;
 
 document.addEventListener('DOMContentLoaded', () => {
-    url = "/pages/inicio.html"
+    url = "pages/inicio.html"
     pedirPage(url)
 })
 
@@ -22,6 +22,7 @@ function setURL(evt) {
     evt.preventDefault()
     url = "pages/" + evt.target.dataset.pagina + ".html"
     pedirPage(url)
+    console.log(url);
 }
 
 function pedirPage(url) {
