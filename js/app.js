@@ -9,14 +9,14 @@ class Adicional {
 
 const adicionales = []
 
-adicionales.push(new Adicional("Salon Fines de Semana", "45000", "parque1", "1"))
-adicionales.push(new Adicional("Salon de L a V al Mediodía", "36000", "multiple", "2"))
+adicionales.push(new Adicional("Salon Fines de Semana", "48500", "parque1", "1"))
+adicionales.push(new Adicional("Salon de L a V al Mediodía", "38000", "multiple", "2"))
 adicionales.push(new Adicional("Salon de L a V por la Tarde o Noche", "40500", "interiorV", "3"))
 adicionales.push(new Adicional("Maquina de Helados", "12000", "helados", "4"))
 adicionales.push(new Adicional("Cabina de Fotos", "9500", "fotocabina", "5"))
-adicionales.push(new Adicional("Show de Magia", "6500", "animacion", "6"))
-adicionales.push(new Adicional("Show de Burbujas", "3500", "burbujaR", "7"))
-adicionales.push(new Adicional("Tatuajes", "4500", "tatuajes", "8"))
+adicionales.push(new Adicional("Show de Magia", "9500", "animacion", "6"))
+adicionales.push(new Adicional("Show de Burbujas", "6500", "burbujaR", "7"))
+adicionales.push(new Adicional("Tatuajes", "6000", "tatuajes", "8"))
 adicionales.push(new Adicional("Personajes", "10000", "personaje", "9"))
 
 let carrito = JSON.parse(localStorage.getItem("carritoPresupuesto")) || [];
