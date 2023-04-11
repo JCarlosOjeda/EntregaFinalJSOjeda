@@ -20,7 +20,7 @@ for (let i = 0; i < links.length; i+=1) {
 
 function setURL(evt) {
     evt.preventDefault()
-    url = "/pages/" + evt.target.dataset.pagina + ".html"
+    url = "pages/" + evt.target.dataset.pagina + ".html"
     pedirPage(url)
 }
 
